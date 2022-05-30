@@ -11,9 +11,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import net.rgielen.fxweaver.core.FxmlView;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
@@ -28,7 +26,6 @@ public class ControllerFXContract implements Initializable {
 
     private final Communication communication;
 
-    @Autowired
     public ControllerFXContract(Communication communication) {
         this.communication = communication;
     }

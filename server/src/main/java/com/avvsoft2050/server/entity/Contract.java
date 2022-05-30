@@ -2,7 +2,6 @@ package com.avvsoft2050.server.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
