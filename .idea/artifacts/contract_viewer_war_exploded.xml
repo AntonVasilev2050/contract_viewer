@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="contract_viewer:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/contract_viewer_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="contract_viewer/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="contract_viewer" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
