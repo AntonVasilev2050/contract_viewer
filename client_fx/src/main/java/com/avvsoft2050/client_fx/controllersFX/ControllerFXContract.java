@@ -49,10 +49,14 @@ public class ControllerFXContract implements Initializable {
                             super.updateItem(contract, empty);
                             if (contract != null) {
                                 CheckBox checkBox = new CheckBox(
-                                        contract.getContractDate() + "                " +
+                                                contract.getContractDate() + "                " +
                                                 contract.getContractNumber() + "                            " +
                                                 contract.getContractUpdate() + "                   ");
                                 checkBox.setSelected(contractIsActive(contract));
+//                                This makes the checkBox not change when clicked
+                                checkBox.setOnMouseClicked(event -> {
+                                    checkBox.setSelected(contractIsActive(contract));
+                                });
                                 setGraphic(checkBox);
                             }
                         }
