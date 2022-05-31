@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="server" />
+        <module name="client_fx_table_view" />
         <module name="client_fx" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="client_fx" target="1.8" />
+      <module name="client_fx_table_view" target="1.8" />
       <module name="contract_viewer" target="1.5" />
       <module name="server" target="1.8" />
     </bytecodeTargetLevel>
@@ -20,6 +22,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="client_fx" options="-parameters" />
+      <module name="client_fx_table_view" options="-parameters" />
       <module name="server" options="-parameters" />
     </option>
   </component>
