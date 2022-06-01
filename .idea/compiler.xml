@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="server" />
         <module name="client_fx_table_view" />
+        <module name="server_crud" />
         <module name="client_fx" />
       </profile>
     </annotationProcessing>
@@ -17,6 +18,7 @@
       <module name="client_fx_table_view" target="1.8" />
       <module name="contract_viewer" target="1.5" />
       <module name="server" target="1.8" />
+      <module name="server_crud" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -24,6 +26,7 @@
       <module name="client_fx" options="-parameters" />
       <module name="client_fx_table_view" options="-parameters" />
       <module name="server" options="-parameters" />
+      <module name="server_crud" options="-parameters" />
     </option>
   </component>
 </project>

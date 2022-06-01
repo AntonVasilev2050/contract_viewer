@@ -12,6 +12,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.stereotype.Component;
+
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class ControllerFXContract implements Initializable {
     public TableColumn<ContractForTable, CheckBox> colStatus;
 
     private final Communication communication;
+
     public ControllerFXContract(Communication communication) {
         this.communication = communication;
     }
@@ -37,23 +39,28 @@ public class ControllerFXContract implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         List<Contract> allContracts;
-        allContracts = communication.getAllContracts();
-        List<ContractForTable> allContractsForTable = new ArrayList<>();
-        for(Contract contract : allContracts){
-            CheckBox checkBox = new CheckBox();
-            checkBox.setSelected(contractIsActive(contract));
-            allContractsForTable.add(new ContractForTable(
-                    contract.getContractDate(),
-                    contract.getContractNumber(),
-                    contract.getContractUpdate(),
-                    checkBox));
+        try {
+            allContracts = communication.getAllContracts();
+            List<ContractForTable> allContractsForTable = new ArrayList<>();
+            for (Contract contract : allContracts) {
+                CheckBox checkBox = new CheckBox();
+                checkBox.setSelected(contractIsActive(contract));
+    //            checkBox.setDisable(true);
+                allContractsForTable.add(new ContractForTable(
+                        contract.getContractDate(),
+                        contract.getContractNumber(),
+                        contract.getContractUpdate(),
+                        checkBox));
+            }
+            ObservableList<ContractForTable> contractsObserve = FXCollections.observableArrayList(allContractsForTable);
+            colContractDate.setCellValueFactory(new PropertyValueFactory<>("contractDate"));
+            colContractNumber.setCellValueFactory(new PropertyValueFactory<>("contractNumber"));
+            colContractUpdate.setCellValueFactory(new PropertyValueFactory<>("contractUpdate"));
+            colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+            tableView.setItems(contractsObserve);
+        } catch (Exception e) {
+            // TODO Error window
         }
-        ObservableList<ContractForTable> contractsObserve = FXCollections.observableArrayList(allContractsForTable);
-        colContractDate.setCellValueFactory(new PropertyValueFactory<>("contractDate"));
-        colContractNumber.setCellValueFactory(new PropertyValueFactory<>("contractNumber"));
-        colContractUpdate.setCellValueFactory(new PropertyValueFactory<>("contractUpdate"));
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        tableView.setItems(contractsObserve);
     }
 
     private boolean contractIsActive(Contract contract) {

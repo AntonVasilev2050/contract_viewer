@@ -2,14 +2,11 @@
 
 <?import javafx.scene.control.*?>
 
-<TableView id="tableView" fx:id="tableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.avvsoft2050.client_fx_table_view.controllersFX.ControllerFXContract">
+<TableView id="tableView" fx:id="tableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avvsoft2050.client_fx_table_view.controllersFX.ControllerFXContract">
     <columns>
-        <TableColumn id="colContractDate" fx:id="colContractDate" prefWidth="150.0" text="Дата"/>
-        <TableColumn id="colContractNumber" fx:id="colContractNumber" prefWidth="150.0" text="Номер"/>
-        <TableColumn id="colContractUpdate" fx:id="colContractUpdate" prefWidth="150.0" text="Обновлен"/>
-        <TableColumn id="colStatus" fx:id="colStatus" prefWidth="75.0" text="Статус"/>
+        <TableColumn id="colContractDate" fx:id="colContractDate" prefWidth="150.0" text="Дата" />
+        <TableColumn id="colContractNumber" fx:id="colContractNumber" prefWidth="150.0" text="Номер" />
+        <TableColumn id="colContractUpdate" fx:id="colContractUpdate" prefWidth="150.0" text="Обновлен" />
+        <TableColumn id="colStatus" fx:id="colStatus" prefWidth="75.0" text="Статус" />
     </columns>
 </TableView>
