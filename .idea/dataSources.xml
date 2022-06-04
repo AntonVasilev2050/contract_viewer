@@ -15,5 +15,13 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="server_crud/Hibernate" uuid="d9e8d195-743d-4926-a810-0666fc240fde">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-52-71-69-66.compute-1.amazonaws.com:5432/d8eiouu4vrdvu0</jdbc-url>
+    </data-source>
   </component>
 </project>

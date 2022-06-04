@@ -7,20 +7,31 @@ import java.time.LocalDate;
 
 public class ContractForTable {
 
+    private final SimpleStringProperty contractId;
     private final SimpleStringProperty contractDate;
     private final SimpleStringProperty contractNumber;
     private final SimpleStringProperty contractUpdate;
     private CheckBox status;
 
 
-    public ContractForTable(LocalDate contractDate,
+    public ContractForTable(Integer contractId,
+                            LocalDate contractDate,
                             Integer contractNumber,
                             LocalDate contractUpdate,
                             CheckBox checkBox) {
+        this.contractId = new SimpleStringProperty(contractId.toString());
         this.contractDate = new SimpleStringProperty(contractDate.toString());
         this.contractNumber = new SimpleStringProperty(contractNumber.toString());
         this.contractUpdate = new SimpleStringProperty(contractUpdate.toString());
         this.status = checkBox;
+    }
+
+    public String getContractId(){
+        return contractId.get();
+    }
+
+    public void setContractId(String contractId){
+        this.contractId.set(contractId);
     }
 
     public String getContractDate() {

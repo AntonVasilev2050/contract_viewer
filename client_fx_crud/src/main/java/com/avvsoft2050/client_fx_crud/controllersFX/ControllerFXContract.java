@@ -1,23 +1,17 @@
 package com.avvsoft2050.client_fx_crud.controllersFX;
 
-import com.avvsoft2050.client_fx_crud.Communication;
 import com.avvsoft2050.client_fx_crud.pojo.Contract;
 import com.avvsoft2050.client_fx_crud.pojo.ContractForTable;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
+import com.avvsoft2050.client_fx_crud.services.ServiceContract;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import net.rgielen.fxweaver.core.FxmlView;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
@@ -29,43 +23,60 @@ public class ControllerFXContract implements Initializable {
     public TableColumn<ContractForTable, String> colContractNumber;
     public TableColumn<ContractForTable, String> colContractUpdate;
     public TableColumn<ContractForTable, CheckBox> colStatus;
+    public TextField tfId;
+    public DatePicker dPickerDate;
+    public TextField tfContractNumber;
+    public DatePicker dPickerUpdate;
+    public Button buttonContracts;
+    public Button buttonAddContract;
+    public Button buttonUpdateContract;
+    public Button buttonDeleteContract;
 
-    private final Communication communication;
+    private final ServiceContract serviceContract;
 
-    public ControllerFXContract(Communication communication) {
-        this.communication = communication;
+    public ControllerFXContract(ServiceContract serviceContract) {
+        this.serviceContract = serviceContract;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        List<Contract> allContracts;
-        try {
-            allContracts = communication.getAllContracts();
-            List<ContractForTable> allContractsForTable = new ArrayList<>();
-            for (Contract contract : allContracts) {
-                CheckBox checkBox = new CheckBox();
-                checkBox.setSelected(contractIsActive(contract));
-    //            checkBox.setDisable(true);
-                allContractsForTable.add(new ContractForTable(
-                        contract.getContractDate(),
-                        contract.getContractNumber(),
-                        contract.getContractUpdate(),
-                        checkBox));
-            }
-            ObservableList<ContractForTable> contractsObserve = FXCollections.observableArrayList(allContractsForTable);
-            colContractDate.setCellValueFactory(new PropertyValueFactory<>("contractDate"));
-            colContractNumber.setCellValueFactory(new PropertyValueFactory<>("contractNumber"));
-            colContractUpdate.setCellValueFactory(new PropertyValueFactory<>("contractUpdate"));
-            colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-            tableView.setItems(contractsObserve);
-        } catch (Exception e) {
-            // TODO Error window
-        }
+       serviceContract.showAllContracts(tableView, colContractDate, colContractNumber, colContractUpdate, colStatus);
     }
 
-    private boolean contractIsActive(Contract contract) {
-        LocalDate today = LocalDate.now();
-        LocalDate contractUpdate = contract.getContractUpdate();
-        return contractUpdate.isAfter(today.minusDays(60));
+    public void buttonContractsClicked(ActionEvent actionEvent) {
+        serviceContract.showAllContracts(tableView, colContractDate, colContractNumber, colContractUpdate, colStatus);
+    }
+
+    public void buttonAddContractClicked(ActionEvent actionEvent) {
+        saveOrUpdateContract(0);
+    }
+
+    public void buttonUpdateContactClicked(ActionEvent actionEvent) {
+        saveOrUpdateContract(Integer.parseInt(tfId.getText()));
+    }
+
+    public void buttonDeleteContactClicked(ActionEvent actionEvent) {
+        int id = Integer.parseInt(tfId.getText());
+        serviceContract.deleteContract(id);
+        serviceContract.showAllContracts(tableView, colContractDate, colContractNumber, colContractUpdate, colStatus);
+    }
+
+    private void saveOrUpdateContract(int id){
+        Contract contract = new Contract(
+                id,
+                LocalDate.parse(dPickerDate.getValue().toString()),
+                Integer.parseInt(tfContractNumber.getText()),
+                LocalDate.parse(dPickerUpdate.getValue().toString()));
+        serviceContract.saveContract(contract);
+        serviceContract.showAllContracts(tableView, colContractDate, colContractNumber, colContractUpdate, colStatus);
+    }
+
+    public void tableViewRowClicked(MouseEvent mouseEvent) {
+        ContractForTable contractForTable = serviceContract.getSelectedContract(tableView);
+        tfId.setText(contractForTable.getContractId());
+        dPickerDate.setValue(LocalDate.parse(contractForTable.getContractDate()));
+        tfContractNumber.setText(contractForTable.getContractNumber());
+        dPickerUpdate.setValue(LocalDate.parse(contractForTable.getContractUpdate()));
+        tableView.getFocusModel().focus(1);
     }
 }

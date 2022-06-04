@@ -4,9 +4,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avvsoft2050.client_fx_crud.controllersFX.ControllerFXContract">
-    <HBox prefHeight="400.0" prefWidth="600.0">
-        <TableView id="tableView" fx:id="tableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="395.0" prefWidth="335.0">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="410.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.avvsoft2050.client_fx_crud.controllersFX.ControllerFXContract">
+    <HBox prefHeight="400.0" prefWidth="700.0">
+        <TableView id="tableView" fx:id="tableView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#tableViewRowClicked" prefHeight="395.0" prefWidth="350.0">
             <columns>
                 <TableColumn id="colContractDate" fx:id="colContractDate" prefWidth="90.0" text="Дата" />
                 <TableColumn id="colContractNumber" fx:id="colContractNumber" prefWidth="90.0" text="Номер" />
@@ -14,30 +14,30 @@
                 <TableColumn id="colStatus" fx:id="colStatus" prefWidth="60.0" text="Статус" />
             </columns>
             <HBox.margin>
-                <Insets />
+                <Insets left="10.0" />
             </HBox.margin>
         </TableView>
-        <Separator orientation="VERTICAL" prefHeight="200.0" />
-        <VBox prefHeight="400.0" prefWidth="265.0">
-            <Pane prefHeight="250.0" prefWidth="200.0">
-                <Label id="lableId" fx:id="lableId" layoutX="7.0" layoutY="36.0" text="Id" />
-                <TextField id="tfId" fx:id="tfId" layoutX="106.0" layoutY="32.0" />
-                <Label id="LaberlContractDate" fx:id="LaberlContractDate" layoutX="7.0" layoutY="72.0" text="Дата договора" />
-                <TextField id="tfContractDate" fx:id="tfContractDate" layoutX="106.0" layoutY="68.0" />
-                <Label id="labelContractNumber" fx:id="labelContractNumber" layoutX="7.0" layoutY="106.0" text="Номер договора" />
-                <TextField id="tfContractNumber" fx:id="tfContractNumber" layoutX="106.0" layoutY="102.0" />
-                <Label fx:id="labelContractUpdate" layoutX="7.0" layoutY="140.0" text="Дата обновления" />
-                <TextField fx:id="tfContractUpdate" layoutX="106.0" layoutY="136.0" />
+        <Separator orientation="VERTICAL" />
+        <VBox prefHeight="400.0" prefWidth="340.0">
+            <Pane prefHeight="250.0" prefWidth="340.0">
+                <Label id="lableId" fx:id="lableId" layoutX="7.0" layoutY="35.0" text="Id" />
+                <TextField id="tfId" fx:id="tfId" layoutX="140.0" layoutY="30.0" prefWidth="125.0" />
+                <Label id="LaberlContractDate" fx:id="LaberlContractDate" layoutX="7.0" layoutY="70.0" text="Дата договора" />
+                <DatePicker fx:id="dPickerDate" layoutX="140.0" layoutY="65.0" prefHeight="25.0" prefWidth="150.0" />
+                <Label id="labelContractNumber" fx:id="labelContractNumber" layoutX="6.0" layoutY="105.0" text="Номер договора" />
+                <TextField id="tfContractNumber" fx:id="tfContractNumber" layoutX="140.0" layoutY="100.0" prefHeight="25.0" prefWidth="125.0" />
+                <Label fx:id="labelContractUpdate" layoutX="5.0" layoutY="140.0" text="Дата обновления" />
+                <DatePicker fx:id="dPickerUpdate" layoutX="140.0" layoutY="135.0" prefHeight="25.0" prefWidth="150.0" />
             </Pane>
-            <Separator prefWidth="200.0" />
-            <Pane prefHeight="150.0" prefWidth="200.0">
+            <Separator />
+            <Pane prefHeight="150.0" prefWidth="340.0">
                 <VBox.margin>
                     <Insets bottom="10.0" />
                 </VBox.margin>
-                <Button fx:id="buttonContracts" layoutX="58.0" layoutY="7.0" mnemonicParsing="false" prefWidth="150.0" text="Список всех контрактов" />
-                <Button fx:id="buttonAddContract" layoutX="58.0" layoutY="43.0" mnemonicParsing="false" prefWidth="150.0" text="Добавить контракт" />
-                <Button fx:id="buttonUpdateContract" layoutX="57.0" layoutY="80.0" mnemonicParsing="false" prefWidth="150.0" text="Обновить контракт" />
-                <Button fx:id="buttonDeleteContract" layoutX="58.0" layoutY="116.0" mnemonicParsing="false" prefWidth="150.0" text="Удалить контракт" />
+                <Button fx:id="buttonContracts" layoutX="60.0" layoutY="10.0" mnemonicParsing="false" onAction="#buttonContractsClicked" prefWidth="200.0" text="Список всех контрактов" />
+                <Button fx:id="buttonAddContract" layoutX="60.0" layoutY="45.0" mnemonicParsing="false" onAction="#buttonAddContractClicked" prefWidth="200.0" text="Добавить контракт" />
+                <Button fx:id="buttonUpdateContract" layoutX="60.0" layoutY="80.0" mnemonicParsing="false" onAction="#buttonUpdateContactClicked" prefWidth="200.0" text="Обновить контракт" />
+                <Button fx:id="buttonDeleteContract" layoutX="60.0" layoutY="115.0" mnemonicParsing="false" onAction="#buttonDeleteContactClicked" prefWidth="200.0" text="Удалить контракт" />
             </Pane>
         </VBox>
     </HBox>
