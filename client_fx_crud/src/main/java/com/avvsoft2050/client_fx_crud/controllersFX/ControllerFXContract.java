@@ -40,7 +40,7 @@ public class ControllerFXContract implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       serviceContract.showAllContracts(tableView, colContractDate, colContractNumber, colContractUpdate, colStatus);
+        serviceContract.showAllContracts(tableView, colContractDate, colContractNumber, colContractUpdate, colStatus);
     }
 
     public void buttonContractsClicked(ActionEvent actionEvent) {
@@ -61,7 +61,7 @@ public class ControllerFXContract implements Initializable {
         serviceContract.showAllContracts(tableView, colContractDate, colContractNumber, colContractUpdate, colStatus);
     }
 
-    private void saveOrUpdateContract(int id){
+    private void saveOrUpdateContract(int id) {
         Contract contract = new Contract(
                 id,
                 LocalDate.parse(dPickerDate.getValue().toString()),
@@ -77,6 +77,5 @@ public class ControllerFXContract implements Initializable {
         dPickerDate.setValue(LocalDate.parse(contractForTable.getContractDate()));
         tfContractNumber.setText(contractForTable.getContractNumber());
         dPickerUpdate.setValue(LocalDate.parse(contractForTable.getContractUpdate()));
-        tableView.getFocusModel().focus(1);
     }
 }

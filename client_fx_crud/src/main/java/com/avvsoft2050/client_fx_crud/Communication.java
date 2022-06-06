@@ -6,11 +6,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Component
 public class Communication {
@@ -30,10 +27,7 @@ public class Communication {
                 null,
                 new ParameterizedTypeReference<List<Contract>>() {
                 });
-        List<Contract> list = Objects.requireNonNull(responseEntity.getBody())
-                .stream()
-                .sorted((Comparator.comparing(Contract::getContractDate)))
-                .collect(Collectors.toList());
+        List<Contract> list = Objects.requireNonNull(responseEntity.getBody());
         return list;
     }
 
