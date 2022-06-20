@@ -3,9 +3,6 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/server/pom.xml" />
-        <option value="$PROJECT_DIR$/client_fx/pom.xml" />
-        <option value="$PROJECT_DIR$/client_fx_table_view/pom.xml" />
         <option value="$PROJECT_DIR$/server_crud/pom.xml" />
         <option value="$PROJECT_DIR$/client_fx_crud/pom.xml" />
       </list>
