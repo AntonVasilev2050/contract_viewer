@@ -14,7 +14,7 @@
 
 Запуск.
 
-1.Сначала (модуль server) - сервер, обрабатывает запросы к БД. БД развернута на heroku, можно в application.properties заменить настройки на localhost.
+1.Сначала (модуль server_crud) - сервер, обрабатывает запросы к БД. БД развернута на heroku, можно в application.properties заменить настройки на localhost.
 Это Spring Boot приложение. Запускается из ServerCrudApplication.
 
 2.Клиент (модуль client_fx_crud). Запускается из ClientFxCrudApplication.
