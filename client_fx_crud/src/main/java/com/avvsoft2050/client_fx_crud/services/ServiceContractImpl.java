@@ -5,9 +5,7 @@ import com.avvsoft2050.client_fx_crud.pojo.Contract;
 import com.avvsoft2050.client_fx_crud.pojo.ContractForTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.stereotype.Service;
 
@@ -68,6 +66,19 @@ public class ServiceContractImpl implements ServiceContract {
     @Override
     public void deleteContract(int id) {
         communication.deleteContract(id);
+    }
+
+    @Override
+    public void showContractDetails(
+            ContractForTable contractForTable,
+            TextField tfId,
+            DatePicker dPickerDate,
+            TextField tfContractNumber,
+            DatePicker dPickerUpdate) {
+        tfId.setText(contractForTable.getContractId());
+        dPickerDate.setValue(LocalDate.parse(contractForTable.getContractDate()));
+        tfContractNumber.setText(contractForTable.getContractNumber());
+        dPickerUpdate.setValue(LocalDate.parse(contractForTable.getContractUpdate()));
     }
 
     private boolean contractIsActive(Contract contract) {

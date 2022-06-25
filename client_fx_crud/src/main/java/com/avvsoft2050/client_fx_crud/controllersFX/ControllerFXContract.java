@@ -73,9 +73,6 @@ public class ControllerFXContract implements Initializable {
 
     public void tableViewRowClicked(MouseEvent mouseEvent) {
         ContractForTable contractForTable = serviceContract.getSelectedContract(tableView);
-        tfId.setText(contractForTable.getContractId());
-        dPickerDate.setValue(LocalDate.parse(contractForTable.getContractDate()));
-        tfContractNumber.setText(contractForTable.getContractNumber());
-        dPickerUpdate.setValue(LocalDate.parse(contractForTable.getContractUpdate()));
+        serviceContract.showContractDetails(contractForTable, tfId, dPickerDate, tfContractNumber, dPickerUpdate);
     }
 }
